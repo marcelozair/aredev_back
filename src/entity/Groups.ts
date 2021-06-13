@@ -6,10 +6,16 @@ export class notas {
   id: number;
 
   @Column()
+  creator_id: number;
+
+  @Column()
   name: string;
 
   @Column()
   description: string;
+
+  @Column()
+  img: string;
 
   @CreateDateColumn()
   created_at: Date;

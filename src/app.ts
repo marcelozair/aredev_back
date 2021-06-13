@@ -6,12 +6,9 @@ import { createConnection } from "typeorm";
 
 import authRoutes from "./routes/auth.routes"
 import notasRoutes from "./routes/notas.routes"
+import chatPrivateRouter from "./routes/chatPrivate.routes"
 import notificationsRoutes from "./routes/notifications.routes"
-import usersRoutes from "./routes/users.routes"
-import { IncomingHttpHeaders } from 'http';
 
-// # TODO # Se necesita mejorar el codigo de "notas"
-// # TODO # Iniciar con las tablas de grupos
 
 const app = express()
 
@@ -33,5 +30,6 @@ app.get("/", (req, res) => {
 app.use(authRoutes)
 app.use("/notifications", notificationsRoutes)
 app.use("/notas", notasRoutes)
+app.use("/mensajes", chatPrivateRouter)
 
 export default app;

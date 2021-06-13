@@ -9,6 +9,9 @@ export class messages {
   user_id: number;
 
   @Column()
+  sending_user_id: number;
+
+  @Column()
   message: string;
 
   @Column()

@@ -10,9 +10,8 @@ var cors_1 = __importDefault(require("cors"));
 var typeorm_1 = require("typeorm");
 var auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 var notas_routes_1 = __importDefault(require("./routes/notas.routes"));
+var chatPrivate_routes_1 = __importDefault(require("./routes/chatPrivate.routes"));
 var notifications_routes_1 = __importDefault(require("./routes/notifications.routes"));
-// # TODO # Se necesita mejorar el codigo de "notas"
-// # TODO # Iniciar con las tablas de grupos
 var app = express_1.default();
 typeorm_1.createConnection(); // crea una conexion con la base de datos => ormconfig.json
 app.use(cors_1.default()); // permite poder interactuar con las rutas del servidor web
@@ -24,4 +23,5 @@ app.get("/", function (req, res) {
 app.use(auth_routes_1.default);
 app.use("/notifications", notifications_routes_1.default);
 app.use("/notas", notas_routes_1.default);
+app.use("/mensajes", chatPrivate_routes_1.default);
 exports.default = app;

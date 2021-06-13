@@ -4,14 +4,12 @@ import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColu
 export class messages {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column()
-  sala_id: number;
-  
-  @Column()
-  group_id: number;
 
   @Column()
   user_id: number;
+
+  @Column()
+  sending_user_id: number;
 
   @Column()
   message: string;

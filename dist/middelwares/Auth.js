@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.isAuthenticated = void 0;
-var config_1 = require("../config/config");
+var config_1 = require("./../config/config");
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 function isAuthenticated(req, res, next) {
     var token = req.headers["token"];

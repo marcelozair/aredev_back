@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var notas_controller_1 = require("../controllers/notas.controller");
+var Auth_1 = require("./../middlewares/Auth");
+var router = express_1.Router();
+router.get("/", Auth_1.isAuthenticated, notas_controller_1.getNotas);
+router.get("/:id", Auth_1.isAuthenticated, notas_controller_1.getNotaById);
+router.post("/create", Auth_1.isAuthenticated, notas_controller_1.createNota);
+router.put("/update/:id", Auth_1.isAuthenticated, notas_controller_1.updateNota);
+router.delete("/delete/:id", Auth_1.isAuthenticated, notas_controller_1.deleteNota);
+exports.default = router;

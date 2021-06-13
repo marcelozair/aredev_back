@@ -12,7 +12,6 @@ export async function sendMessage(req: Request, res: Response) {
     return res.status(400).json({ message: "crear libreria para errores" })
   }
 
-  console.log("yea")
   const message = {
     user_id: userID,
     sending_user_id: req.params.id,

@@ -20,12 +20,20 @@ var notas = /** @class */ (function () {
     ], notas.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], notas.prototype, "creator_id", void 0);
+    __decorate([
+        typeorm_1.Column(),
         __metadata("design:type", String)
     ], notas.prototype, "name", void 0);
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
     ], notas.prototype, "description", void 0);
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], notas.prototype, "img", void 0);
     __decorate([
         typeorm_1.CreateDateColumn(),
         __metadata("design:type", Date)

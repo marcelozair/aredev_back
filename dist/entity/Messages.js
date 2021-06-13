@@ -21,6 +21,14 @@ var messages = /** @class */ (function () {
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", Number)
+    ], messages.prototype, "sala_id", void 0);
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], messages.prototype, "group_id", void 0);
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
     ], messages.prototype, "user_id", void 0);
     __decorate([
         typeorm_1.Column(),

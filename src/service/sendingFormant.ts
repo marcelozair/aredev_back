@@ -10,7 +10,6 @@ class Message {
 }
 
 export function sendError (message: string = "Algo a salido mal") {
-  console.log({message})
   return new Message(message, "Error")
 }
 

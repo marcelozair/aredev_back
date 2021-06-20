@@ -1,4 +1,3 @@
-Project Bakend develoment
+**ARE DEV**
+Este proyecto se creo con la necesidad de facilitar la comunicacion entre desarroladores de software o de otros temas de TI.
 
-1.- tareas generar el chat grupal y chat personal
-  1.1 chat personal RAMA BMBs

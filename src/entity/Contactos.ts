@@ -1,7 +1,7 @@
 import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn} from "typeorm"
 @Entity()
 
-export class messages {
+export class salas {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -9,14 +9,14 @@ export class messages {
   user_id: number;
 
   @Column()
-  sala_id: number;
+  user_contact_id: number;
 
   @Column()
-  message: string;
+  sala_id: number | null;
 
   @CreateDateColumn()
   created_at: Date;
   
   @UpdateDateColumn()
-  updated_at: Date;
+  updated_at: Date; 
 }

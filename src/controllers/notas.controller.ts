@@ -28,10 +28,13 @@ export const createNota =  async (req: Request, res: Response) => {
 
 export const getNotas = async (req: Request, res: Response) => {
   const notasForUser = await getRepository(notas_users).find({user_id: req.body.userID})
-  const notaList = []
+  const notaList: notas[] = []
 
   for(let nota of notasForUser) {
-    notaList.push(await getRepository(notas).findOne({id: nota.nota_id}))
+    const notaResult: undefined | notas = await getRepository(notas).findOne({id: nota.nota_id})
+    
+    if(notaResult)
+      notaList.push(notaResult)
   }
 
   return res.json(notaList)

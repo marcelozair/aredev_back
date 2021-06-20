@@ -2,6 +2,17 @@ import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColu
 @Entity()
 
 export class notas {
+
+  constructor() {
+    this.id = 0
+    this.creator_id = 0
+    this.name = ""
+    this.description = ""
+    this.img = ""
+    this.created_at = new Date()
+    this.updated_at = new Date()
+  }
+
   @PrimaryGeneratedColumn()
   id: number;
 

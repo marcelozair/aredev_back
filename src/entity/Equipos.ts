@@ -1,22 +1,22 @@
 import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn} from "typeorm"
 @Entity()
 
-export class contactos {
+export class equipos {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  user_id: number;
+  name: string;
 
   @Column()
-  user_contact_id: number;
+  img: string;
 
   @Column()
-  sala_id: number;
+  description: string;
+
+  @Column()
+  theme: string;
 
   @CreateDateColumn()
   created_at: Date;
-  
-  @UpdateDateColumn()
-  updated_at: Date; 
 }

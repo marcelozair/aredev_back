@@ -5,20 +5,43 @@ import { getRepository } from 'typeorm'
 import { sendComplete, sendError } from "../service/sendingFormant";
 import { iMessage } from "../models/message.model";
 import { users } from "../entity/Users";
+import { salas } from "../entity/Salas";
+import { contactos } from "../entity/Contactos";
 
 export async function sendMessage(req: Request, res: Response) {
-
   const { userID, sendingMessage } = req.body;
-
+  const salaId = req.params.id;
+  
   if (!sendingMessage && !req.params.id) {
     return res.status(400).json(sendError())
   }
 
   if (sendingMessage.message.length === 0) return res.status(400).json(sendError())
 
+  let sala = await getRepository(salas).findOne(salaId);
+  if(!sala) {
+    const user_contact = sendingMessage.user_seding_id
+    const estructureSala = getRepository(salas).create({})
+    const newSala =  await getRepository(salas).save(estructureSala)
+    sala = newSala;
+
+    const contactoUser = await getRepository(contactos)
+      .createQueryBuilder("c")
+      .where("c.user_id IN (:...userIds)", { userIds: [userID, user_contact] })
+      .where("c.user_contact_id IN (:...userContactIds)", { userContactIds: [userID, user_contact] })
+      .getOne()
+
+     const contactAddSala = {
+      ...contactoUser,
+      sala_id: sala.id
+     }
+
+     await getRepository(contactos).save(contactAddSala)
+  }
+
   const message = {
     user_id: userID,
-    sending_user_id: req.params.id,
+    sala_id: sala.id,
     ...sendingMessage
   };
 
@@ -40,14 +63,16 @@ export async function deleteMessage(req: Request, res: Response) {
 }
 
 export async function getAllMessage(req: Request, res: Response) {
-
   const { id } = req.params;
   const userId: number = req.body.userID;
 
+  let sala = await getRepository(salas).findOne(id);
+
+  if(!sala) return res.status(400).json(sendError("No hay una sala de mensages registrada"))
+
   const queryResult = await getRepository(messages)
     .createQueryBuilder("m")
-    .where("m.user_id IN (:...userIds)", { userIds: [userId, id] })
-    .where("m.sending_user_id IN (:sending_user_id)", { sending_user_id: [userId, id] })
+    .where("m.sala_id = :sala_id", { sala_id: sala.id })
     .getMany()
 
   /* 
@@ -57,10 +82,9 @@ export async function getAllMessage(req: Request, res: Response) {
 
   const sendingUser = await getRepository(users).findOne(id)
 
-  const messagesAll = queryResult.map((msg: iMessage) => {
+  const messagesAll = queryResult.map((msg: any) => {
     return ({
       id: msg.id,
-      url: msg.url,
       message: msg.message,
       send_time: msg.updated_at,
     })

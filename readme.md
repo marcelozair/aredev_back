@@ -1,6 +1,6 @@
 # areDev
 
-busca solucionar el problema de organización y establecimiento de tareas en un grupo de personas
+Este proyecto busca solucionar el problema de organización y establecimiento de tareas en un gran grupo de personas.
 
 ## Installation
 

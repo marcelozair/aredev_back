@@ -9,6 +9,18 @@ export class users {
   name: string;
 
   @Column()
+  surname: string;
+
+  @Column()
+  gender: string;
+
+  @Column()
+  age: number;
+
+  @Column()
+  dedication: string;
+
+  @Column()
   email: string;
 
   @Column()

@@ -32,9 +32,13 @@ export const signup = async (req: Request, res: Response) => {
 
   const userCreate: iUserCreate = userDB.create({
     name: req.body.name,
+    surname: req.body.surname,
+    gender: req.body.gender,
+    age: req.body.age,
+    dedication: req.body.dedication,
     email: req.body.email,
-    token: "",
-    password
+    password,
+    token: ""
   })
 
   const user: iUser = await userDB.save(userCreate)

@@ -9,6 +9,9 @@ export interface iUser {
 export interface iUserCreate {
   name: string;
   email: string;
+  gender: string;
+  age: number;
+  dedication: string;
   password: string;
   token: string;
 }

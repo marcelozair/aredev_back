@@ -8,6 +8,7 @@ import authRoutes from "./routes/auth.routes"
 import notasRoutes from "./routes/notas.routes"
 import chatPrivateRouter from "./routes/chatPrivate.routes"
 import notificationsRoutes from "./routes/notifications.routes"
+import equiposRoutes from "./routes/equipos.routes"
 
 
 const app = express()
@@ -31,5 +32,6 @@ app.use(authRoutes)
 app.use("/notifications", notificationsRoutes)
 app.use("/notas", notasRoutes)
 app.use("/mensajes", chatPrivateRouter)
+app.use("/equipos", equiposRoutes)
 
 export default app;
